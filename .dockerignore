@@ -1,0 +1,6 @@
+.git/
+*.iml
+.idea/
+*.log
+*.md
+application.yml

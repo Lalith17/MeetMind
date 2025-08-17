@@ -2,6 +2,9 @@
 
 A Spring Boot web application for meeting management, summarization, and email notifications. Integrates with Google GenAI for advanced summarization and uses Thymeleaf for dynamic web pages.
 
+## Deployed Application
+Access the live app here: [https://meetmind.onrender.com](https://meetmind.onrender.com)
+
 ## Features
 - Summarize meeting content using Google GenAI
 - Send meeting summaries via email

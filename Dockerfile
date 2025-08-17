@@ -1,15 +1,13 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:21-jdk-slim
-
-# Set the working directory
+# Stage 1: Build with Maven
+FROM maven:3.9.6-eclipse-temurin-21 AS builder
 WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package -DskipTests
 
-# Copy the built jar file
-COPY target/meeting-*.jar app.jar
-
-# Expose port 8080
+# Stage 2: Run with JDK
+FROM openjdk:21-jdk-slim
+WORKDIR /app
+COPY --from=builder /app/target/meeting-*.jar app.jar
 EXPOSE 8080
-
-# Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
-
